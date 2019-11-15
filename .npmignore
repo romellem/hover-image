@@ -1,0 +1,10 @@
+*.log
+npm-debug.log*
+
+node_modules
+
+# Project files
+.babelrc
+.gitignore
+src
+yarn.lock
