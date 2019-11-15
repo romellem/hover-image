@@ -60,3 +60,7 @@ Defaults to `true`.
 ### License
 
 [MIT](./LICENSE)
+
+### Author
+
+Matt Wade
