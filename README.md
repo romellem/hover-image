@@ -21,7 +21,9 @@ $ yarn global add @designory/hover-image
 ```
 
 ```javascript
-const initializeHoverImage = require('@designory/hover-image');
+import initializeHoverImage from '@designory/hover-image';
+// Or, if non-transpiled:
+// const initializeHoverImage = require('@designory/hover-image').default;
 
 initializeHoverImage({
     hoverSrcAttribute,
