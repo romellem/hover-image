@@ -1,6 +1,6 @@
 {
   "name": "@designory/hover-image",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A generic library to swap out an image on hover.",
   "main": "./lib/hover-image.js",
   "scripts": {
@@ -12,7 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/Designory/hover-image.git"
   },
-  "keywords": ["hover", "image", "swap"],
+  "keywords": [
+    "hover",
+    "image",
+    "swap"
+  ],
   "author": {
     "name": "Matt Wade",
     "email": "matt.wade@designory.com"
