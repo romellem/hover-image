@@ -1,5 +1,5 @@
 {
-  "name": "hover-image",
+  "name": "@designory/hover-image",
   "version": "0.0.1",
   "description": "A generic library to swap out an image on hover.",
   "main": "./lib/hover-image.js",
