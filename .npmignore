@@ -1,5 +1,6 @@
 *.log
 npm-debug.log*
+.DS_Store
 
 node_modules
 
@@ -7,4 +8,5 @@ node_modules
 .babelrc
 .gitignore
 src
+docs
 yarn.lock
