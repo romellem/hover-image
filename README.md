@@ -2,7 +2,7 @@
 
 A generic library to swap out an image on hover.
 
-<img src="docs/dog.gif" width="250">
+<img src="https://raw.githubusercontent.com/Designory/hover-image/master/docs/dog.gif" width="250">
 
 [Photos by Daniel Brubaker on Unsplash](https://unsplash.com/@dpmb87?utm_medium=referral)
 
