@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Designory/hover-image.git"
   },
-  "keywords": [],
+  "keywords": ["hover", "image", "swap"],
   "author": {
     "name": "Matt Wade",
     "email": "matt.wade@designory.com"
