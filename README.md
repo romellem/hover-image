@@ -65,4 +65,4 @@ Defaults to `true`.
 
 ### Author
 
-Matt Wade
+[Matt Wade](https://github.com/romellem/)
