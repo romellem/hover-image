@@ -4,6 +4,7 @@ import delegate from 'delegate';
  * @param {String} [options.hoverSrcAttribute]
  * @param {String} [options.orginalSrcAttribute]
  * @param {String} [options.classToggle]
+ * @param {Boolean} [options.preloadHoverImages]
  */
 const initializeHoverImage = ({
 	hoverSrcAttribute = 'data-hover-src',
