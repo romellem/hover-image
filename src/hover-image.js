@@ -5,6 +5,7 @@ import delegate from 'delegate';
  * @param {String} [options.orginalSrcAttribute]
  * @param {String} [options.classToggle]
  * @param {Boolean} [options.preloadHoverImages]
+ * @returns {Function} Returns a method to destroy the event listeners we placed.
  */
 const initializeHoverImage = ({
 	hoverSrcAttribute = 'data-hover-src',
@@ -19,7 +20,7 @@ const initializeHoverImage = ({
 	}
 
 	const selector = `[${hoverSrcAttribute}]`;
-	delegate(selector, 'mouseover', e => {
+	const mouseover = delegate(selector, 'mouseover', e => {
 		const image = e.delegateTarget;
 
 		const original_src = image.getAttribute(orginalSrcAttribute);
@@ -37,7 +38,7 @@ const initializeHoverImage = ({
 		}
 	});
 
-	delegate(selector, 'mouseout', e => {
+	const mouseout = delegate(selector, 'mouseout', e => {
 		const image = e.delegateTarget;
 
 		const original_src = image.getAttribute(orginalSrcAttribute);
@@ -64,6 +65,11 @@ const initializeHoverImage = ({
 			// Kicks off the network request for our browser to cache for later
 			new Image().src = image_src;
 		});
+	}
+
+	return function destroy() {
+		mouseover.destroy();
+		mouseout.destroy();
 	}
 };
 
