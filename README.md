@@ -23,6 +23,29 @@ on an `<img>` tag.
 <img src="original.jpg" data-hover-src="hover.jpg">
 ```
 
+If you place the attribute on a tag that isn't an `<img>`, then we search for the first child `<img>` tag to have its source swapped.
+
+```html
+<a href="#" data-hover-src="hover.png">
+    <img src="original.png">
+    When you hover over this link, the icon will change.
+</a>
+```
+
+The child image is found using `querySelector`, which uses a ["depth-first pre-order traversal"](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) of the child nodes. If you have many child image nodes, and you don't want the first one, you can also put an additional data attribute to specify a selector.
+
+This data attribute is configured by the [`hoverImageSelectorAttribute`](#hoverimageselectorattribute) option, and defaults to `'data-image-selector'`.
+
+```html
+<a href="#" data-hover-src="hover.png" data-image-selector=".will-be-changed">
+    <img src="remains-unchanged.png">
+    When you hover over this link, the icon on the left will remain the same, the icon to the <em>right</em> instead will change.
+    <img src="original.png" class="will-be-changed">
+</a>
+```
+
+Once your HTML is configured, you need to initialize the mouse event listeners:
+
 ```javascript
 import initializeHoverImage from '@designory/hover-image';
 // Or, if non-transpiled:
@@ -31,9 +54,19 @@ import initializeHoverImage from '@designory/hover-image';
 initializeHoverImage({
     hoverSrcAttribute,
     orginalSrcAttribute,
+    hoverImageSelectorAttribute,
     classToggle,
     preloadHoverImages,
 });
+```
+
+The initialize function returns a `destroy` function if you need to remove
+the event listeners that get added:
+
+```javascript
+let destroyHoverListeners = initializeHoverImage();
+
+destroyHoverListeners();
 ```
 
 ### Options
