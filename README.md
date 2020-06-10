@@ -108,10 +108,10 @@ Defaults to `true`.
 * Internet Explorer (IE) 10
 * All modern browsers
 
-### License
+## License
 
 [MIT](./LICENSE)
 
-### Author
+## Author
 
 [Matt Wade](https://github.com/romellem/)
