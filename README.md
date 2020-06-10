@@ -16,6 +16,9 @@ $ yarn global add @designory/hover-image
 
 ## Usage
 
+Place your configured `hoverSrcAttribute` (which defaults to `data-hover-src`)
+on an `<img>` tag.
+
 ```html
 <img src="original.jpg" data-hover-src="hover.jpg">
 ```
