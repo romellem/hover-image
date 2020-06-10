@@ -3,7 +3,7 @@ import delegate from 'delegate';
 /**
  * @param {String} [options.hoverSrcAttribute] The data attribute the library will attach its delegated events to.
  * @param {String} [options.orginalSrcAttribute] The name of the data attribute the library will save the original source URL while the image is swapped out.
- * @param {String} [options.hoverImageSelectorAttribute] When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When not this attribute is not present, its value defaults to 'img'.
+ * @param {String} [options.hoverImageSelectorAttribute] When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, its value defaults to 'img'.
  * @param {String} [options.classToggle] The class that will get toggled while the image is swapped out on hover.
  * @param {Boolean} [options.preloadHoverImages] When true, will make a network request for all images specified within the `hoverSrcAttribute` before the initial `mouseover` event has fired.
  * @returns {Function} Returns a method to destroy the event listeners we placed.
