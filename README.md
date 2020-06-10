@@ -16,7 +16,7 @@ $ yarn global add @designory/hover-image
 
 ## Usage
 
-Place your configured `hoverSrcAttribute` (which defaults to `data-hover-src`)
+Place your configured [`hoverSrcAttribute`](#hoversrcattribute) (which defaults to `data-hover-src`)
 on an `<img>` tag.
 
 ```html
@@ -87,7 +87,7 @@ Defaults to `'data-original-src'`.
 
 #### `hoverImageSelectorAttribute`
 
-When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, the selector it uses is `'img'`.
+When the [`hoverSrcAttribute`](#hoversrcattribute) is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, the selector it uses is `'img'`.
 
 Defaults to `'data-image-selector'`.
 
@@ -99,7 +99,7 @@ Defaults to `'is-hovered'`.
 
 #### `preloadHoverImages`
 
-When true, will make a network request for all images specified within the `hoverSrcAttribute` before the initial `mouseover` event has fired. If the browser is caching network requests, this should help eliminate the slight empty flash the user sees when hovering over the image for the first time.
+When true, will make a network request for all images specified within the [`hoverSrcAttribute`](#hoversrcattribute) before the initial `mouseover` event has fired. If the browser is caching network requests, this should help eliminate the slight empty flash the user sees when hovering over the image for the first time.
 
 Defaults to `true`.
 
