@@ -1,10 +1,10 @@
 import delegate from 'delegate';
 
 /**
- * @param {String} [options.hoverSrcAttribute]
- * @param {String} [options.orginalSrcAttribute]
- * @param {String} [options.classToggle]
- * @param {Boolean} [options.preloadHoverImages]
+ * @param {String} [options.hoverSrcAttribute] The data attribute the library will attach its delegated events to.
+ * @param {String} [options.orginalSrcAttribute] The name of the data attribute the library will save the original source URL while the image is swapped out.
+ * @param {String} [options.classToggle] The class that will get toggled while the image is swapped out on hover.
+ * @param {Boolean} [options.preloadHoverImages] When true, will make a network request for all images specified within the `hoverSrcAttribute` before the initial `mouseover` event has fired.
  * @returns {Function} Returns a method to destroy the event listeners we placed.
  */
 const initializeHoverImage = ({
