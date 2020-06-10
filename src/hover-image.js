@@ -21,32 +21,65 @@ const initializeHoverImage = ({
 
 	const selector = `[${hoverSrcAttribute}]`;
 	const mouseover = delegate(selector, 'mouseover', e => {
-		const image = e.delegateTarget;
+		let target = e.delegateTarget;
+		let image = target;
+
+		if (image.tagName !== 'IMG') {
+			image = target.querySelector('img');
+			if (!image) {
+				return;
+			}
+		}
+
+		let previous_hover_node = e.relatedTarget;
+		if (target.contains(previous_hover_node)) {
+			return;
+		}
+
+		const hover_src = target.getAttribute(hoverSrcAttribute);
+		if (!hover_src || hover_src === image.src) {
+			return;
+		}
 
 		const original_src = image.getAttribute(orginalSrcAttribute);
 		if (!original_src) {
 			image.setAttribute(orginalSrcAttribute, image.src);
 		}
 
-		const hover_src = image.getAttribute(hoverSrcAttribute);
-		if (hover_src) {
-			image.src = hover_src;
+		// Change our image's `src` attribute to the hover source
+		image.src = hover_src;
 
-			if (classToggle) {
-				image.classList.add(classToggle);
-			}
+		if (classToggle) {
+			target.classList.add(classToggle);
 		}
 	});
 
 	const mouseout = delegate(selector, 'mouseout', e => {
-		const image = e.delegateTarget;
+		let target = e.delegateTarget;
+		let image = target;
+
+		if (image.tagName !== 'IMG') {
+			image = target.querySelector('img');
+			if (!image) {
+				return;
+			}
+		}
+
+		let previous_hover_node = e.relatedTarget;
+		if (target.contains(previous_hover_node)) {
+			return;
+		}
 
 		const original_src = image.getAttribute(orginalSrcAttribute);
-		if (original_src) {
-			image.src = original_src;
-			if (classToggle) {
-				image.classList.remove(classToggle);
-			}
+		if (!original_src || image.src === original_src) {
+			return;
+		}
+
+		// Change our image's `src` attribute back to its original source
+		image.src = original_src;
+
+		if (classToggle) {
+			image.classList.remove(classToggle);
 		}
 	});
 
@@ -70,7 +103,7 @@ const initializeHoverImage = ({
 	return function destroy() {
 		mouseover.destroy();
 		mouseout.destroy();
-	}
+	};
 };
 
 export default initializeHoverImage;
