@@ -75,6 +75,8 @@ destroyHoverListeners();
 
 The data attribute the library will attach its delegated events to.
 
+This can be placed on any element, not just on an `<img>` tag. If this is placed on a non-image tag, then we look for the first child `<img>` of that element. If you need to target a child element other than the first matching `img`, then see the [`hoverImageSelectorAttribute`](#hoverimageselectorattribute) option for more information on how to pass a custom selector.
+
 Defaults to `'data-hover-src'`.
 
 #### `orginalSrcAttribute`
@@ -82,6 +84,12 @@ Defaults to `'data-hover-src'`.
 The name of the data attribute the library will save the original source URL while the image is swapped out.
 
 Defaults to `'data-original-src'`.
+
+#### `hoverImageSelectorAttribute`
+
+When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, the selector it uses is `'img'`.
+
+Defaults to `'data-image-selector'`.
 
 #### `classToggle`
 
