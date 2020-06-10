@@ -103,6 +103,11 @@ When true, will make a network request for all images specified within the `hove
 
 Defaults to `true`.
 
+## Browser Support
+
+* Internet Explorer (IE) 10
+* All modern browsers
+
 ### License
 
 [MIT](./LICENSE)
