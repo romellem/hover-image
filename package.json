@@ -2,7 +2,12 @@
   "name": "@designory/hover-image",
   "version": "0.2.0",
   "description": "A generic library to swap out an image on hover.",
-  "main": "./lib/hover-image.js",
+  "main": "lib/umd/hover-image.js",
+  "module": "lib/esm/hover-image.esm.js",
+  "files": [
+    "lib/umd/",
+    "lib/esm/"
+  ],
   "scripts": {
     "clean": "rimraf lib",
     "build": "rollup -c",
