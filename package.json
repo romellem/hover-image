@@ -5,7 +5,7 @@
   "main": "./lib/hover-image.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src --out-dir lib",
+    "build": "rollup -c",
     "prepublish": "npm run clean && npm run build"
   },
   "repository": {
