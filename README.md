@@ -50,7 +50,7 @@ Once your HTML is configured, you need to initialize the mouse event listeners:
 ```javascript
 import initializeHoverImage from '@designory/hover-image';
 // Or, if non-transpiled:
-// const initializeHoverImage = require('@designory/hover-image').default;
+// const initializeHoverImage = require('@designory/hover-image');
 
 initializeHoverImage({
     hoverSrcAttribute,
