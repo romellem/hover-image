@@ -1,6 +1,6 @@
 {
   "name": "@designory/hover-image",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A generic library to swap out an image on hover.",
   "main": "./lib/umd/hover-image.js",
   "module": "./lib/esm/hover-image.esm.js",
