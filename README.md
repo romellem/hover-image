@@ -73,7 +73,7 @@ destroyHoverListeners();
 Additionally, hover-image is published as a UMD module and so can be used directly in a browser context. When loading the UMD module, it is exposed under `window.hoverImage`.
 
 ```html
-<script src="https://unpkg.com/@designory/hover-image/dist/umd/hover-image.min.js"></script>
+<script src="https://unpkg.com/@designory/hover-image/lib/umd/hover-image.min.js"></script>
 <script>
 var destroyHoverListeners = window.hoverImage({
     // Options here...
