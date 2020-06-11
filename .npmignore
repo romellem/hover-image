@@ -1,3 +1,4 @@
+.npmignore
 *.log
 npm-debug.log*
 .DS_Store
@@ -7,6 +8,8 @@ node_modules
 # Project files
 .babelrc
 .gitignore
+rollup.config.js
 src
 docs
+examples
 yarn.lock
