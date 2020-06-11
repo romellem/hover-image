@@ -1,5 +1,7 @@
 # Hover Image
 
+[![npm version](https://badge.fury.io/js/%40designory%2Fhover-image.svg)](https://badge.fury.io/js/%40designory%2Fhover-image)
+
 A generic library to swap out an image on hover.
 
 <img src="https://raw.githubusercontent.com/Designory/hover-image/master/docs/dog.gif" width="250">
@@ -9,9 +11,8 @@ A generic library to swap out an image on hover.
 ## Install
 
 ```
-$ npm install @designory/hover-image
-# or
-$ yarn global add @designory/hover-image
+yarn add @designory/hover-image
+# or npm install @designory/hover-image
 ```
 
 ## Usage
@@ -67,6 +68,17 @@ the event listeners that get added:
 let destroyHoverListeners = initializeHoverImage();
 
 destroyHoverListeners();
+```
+
+Additionally, hover-image is published as a UMD module and so can be used directly in a browser context. When loading the UMD module, it is exposed under `window.hoverImage`.
+
+```html
+<script src="https://unpkg.com/@designory/hover-image/dist/umd/hover-image.min.js"></script>
+<script>
+var destroyHoverListeners = window.hoverImage({
+    // Options here...
+});
+</script>
 ```
 
 ### Options

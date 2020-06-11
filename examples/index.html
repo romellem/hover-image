@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hover-Image Examples</title>
+		<style>
+			.box {
+				background: beige;
+				padding: 1em;
+				margin: 1em 0;
+				max-width: 350px;
+			}
+
+			img {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<p>Hover over the image below to see it change.</p>
+		<img
+			data-hover-src="https://images.unsplash.com/photo-1562070822-153e4f8d8ac1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&h=250&q=80"
+			src="https://images.unsplash.com/photo-1562070821-fe899ee38663?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&h=250&q=80"
+		/>
+		<br />
+		<div
+			class="box"
+			data-hover-src="https://images.unsplash.com/photo-1558680174-e8e572f854e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&h=250&q=80"
+		>
+			<p>Hovering over this entire <b>box</b> will change the image below</p>
+			<img
+				src="https://images.unsplash.com/photo-1558680174-aca98f010ea1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&h=250&q=80"
+			/>
+		</div>
+
+		<div
+			class="box"
+			data-hover-src="https://images.unsplash.com/photo-1551231869-c2b46c8de00b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&fit=crop&w=250&q=60"
+			data-image-selector=".will-be-changed"
+		>
+			<p>Hover over this entire <b>box</b> will change the dog, not the turles.</p>
+			<img
+				src="https://images.unsplash.com/photo-1590689538707-53f3e07ebe97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80"
+			/>
+			<img
+				src="https://images.unsplash.com/photo-1554020938-7621701e8122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80"
+			/>
+			<img
+				src="https://images.unsplash.com/photo-1578757089397-a617d290613a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=250&q=80"
+			/>
+			<img
+				class="will-be-changed"
+				src="https://images.unsplash.com/photo-1551059045-14a7b7fe65e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&fit=crop&w=250&q=80"
+			/>
+		</div>
+
+		<!-- Load the UMD module -->
+		<script src="../lib/umd/hover-image.js"></script>
+		<script>
+			// Use default options
+			window.hoverImage();
+		</script>
+	</body>
+</html>
