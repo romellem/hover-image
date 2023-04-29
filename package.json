@@ -1,5 +1,5 @@
 {
-  "name": "@designory/hover-image",
+  "name": "hover-image",
   "version": "0.3.4",
   "description": "A generic library to swap out an image on hover.",
   "main": "./lib/umd/hover-image.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Designory/hover-image.git"
+    "url": "git+https://github.com/romellem/hover-image.git"
   },
   "keywords": [
     "hover",
@@ -25,13 +25,13 @@
   ],
   "author": {
     "name": "Matt Wade",
-    "email": "matt.wade@designory.com"
+    "email": "romellem.git@gmail.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Designory/hover-image/issues"
+    "url": "https://github.com/romellem/hover-image/issues"
   },
-  "homepage": "https://github.com/Designory/hover-image#readme",
+  "homepage": "https://github.com/romellem/hover-image#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
