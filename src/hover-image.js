@@ -34,7 +34,8 @@ const initializeHoverImage = ({
 	}
 
 	const selector = `[${hoverSrcAttribute}]`;
-	const mouseover = delegate(selector, 'mouseover', e => {
+
+	function mouseoverHandler(e) {
 		let target = e.delegateTarget;
 		let image = target;
 
@@ -72,9 +73,9 @@ const initializeHoverImage = ({
 		if (classToggle) {
 			target.classList.add(classToggle);
 		}
-	});
+	}
 
-	const mouseout = delegate(selector, 'mouseout', e => {
+	function mouseoutHandler(e) {
 		let target = e.delegateTarget;
 		let image = target;
 
@@ -106,7 +107,12 @@ const initializeHoverImage = ({
 		if (classToggle) {
 			image.classList.remove(classToggle);
 		}
-	});
+	}
+
+	const mouseoverListener = delegate(selector, 'mouseover', mouseoverHandler);
+	const focusListener = delegate(selector, 'focus', mouseoverHandler);
+	const mouseoutListener = delegate(selector, 'mouseout', mouseoutHandler);
+	const blurListener = delegate(selector, 'blur', mouseoutHandler);
 
 	if (preloadHoverImages) {
 		// Find all matching images and get unique URLs from their `hoverSrcAttribute`
@@ -125,8 +131,10 @@ const initializeHoverImage = ({
 	}
 
 	return function destroy() {
-		mouseover.destroy();
-		mouseout.destroy();
+		mouseoverListener.destroy();
+		focusListener.destroy();
+		mouseoutListener.destroy();
+		blurListener.destroy();
 	};
 };
 
