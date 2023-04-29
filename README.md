@@ -1,6 +1,6 @@
 # Hover Image
 
-[![npm version](https://badge.fury.io/js/romellem%2Fhover-image.svg)](https://badge.fury.io/js/romellem%2Fhover-image)
+[![npm version](https://badge.fury.io/js/%40romellem%2Fhover-image.svg)](https://badge.fury.io/js/%40romellem%2Fhover-image)
 
 A generic library to swap out an image on hover.
 
@@ -11,8 +11,8 @@ A generic library to swap out an image on hover.
 ## Install
 
 ```
-yarn add hover-image
-# or npm install hover-image
+yarn add @romellem/hover-image
+# or npm install @romellem/hover-image
 ```
 
 ## Usage
@@ -48,9 +48,9 @@ This data attribute is configured by the [`hoverImageSelectorAttribute`](#hoveri
 Once your HTML is configured, you need to initialize the mouse event listeners:
 
 ```javascript
-import initializeHoverImage from 'hover-image';
+import initializeHoverImage from '@romellem/hover-image';
 // Or, if non-transpiled:
-// const initializeHoverImage = require('hover-image');
+// const initializeHoverImage = require('@romellem/hover-image');
 
 initializeHoverImage({
     hoverSrcAttribute,
@@ -73,7 +73,7 @@ destroyHoverListeners();
 Additionally, hover-image is published as a UMD module and so can be used directly in a browser context. When loading the UMD module, it is exposed under `window.hoverImage`.
 
 ```html
-<script src="https://unpkg.com/hover-image/lib/umd/hover-image.min.js"></script>
+<script src="https://unpkg.com/@romellem/hover-image/lib/umd/hover-image.min.js"></script>
 <script>
 var destroyHoverListeners = window.hoverImage({
     // Options here...
