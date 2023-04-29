@@ -54,7 +54,7 @@ import initializeHoverImage from '@romellem/hover-image';
 
 initializeHoverImage({
     hoverSrcAttribute,
-    orginalSrcAttribute,
+    originalSrcAttribute,
     hoverImageSelectorAttribute,
     classToggle,
     preloadHoverImages,
@@ -91,7 +91,7 @@ This can be placed on any element, not just on an `<img>` tag. If this is placed
 
 Defaults to `'data-hover-src'`.
 
-#### `orginalSrcAttribute`
+#### `originalSrcAttribute`
 
 The name of the data attribute the library will save the original source URL while the image is swapped out.
 

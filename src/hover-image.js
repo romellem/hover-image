@@ -1,28 +1,41 @@
 import delegate from 'delegate';
 
 /**
- * @param {String} [options.hoverSrcAttribute] The data attribute the library will attach its delegated events to.
- * @param {String} [options.orginalSrcAttribute] The name of the data attribute the library will save the original source URL while the image is swapped out.
- * @param {String} [options.hoverImageSelectorAttribute] When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, its value defaults to 'img'.
- * @param {String} [options.classToggle] The class that will get toggled while the image is swapped out on hover.
- * @param {Boolean} [options.preloadHoverImages] When true, will make a network request for all images specified within the `hoverSrcAttribute` before the initial `mouseover` event has fired.
- * @returns {Function} Returns a method to destroy the event listeners we placed.
+ * @typedef {Object} HoverImageOptions
+ * @property {String} [hoverSrcAttribute] The data attribute the library will attach its delegated events to.
+ * @property {String} [orginalSrcAttribute] Deprecated, use `originalSrcAttribute` instead.
+ * @property {String} [originalSrcAttribute] The name of the data attribute the library will save the original source URL while the image is swapped out.
+ * @property {String} [hoverImageSelectorAttribute] When the `hoverSrcAttribute` is placed on a non-image element, this optional attribute allows for a selector to be passed for the child image that'll be swapped out. When this attribute is not present, its value defaults to 'img'.
+ * @property {String} [classToggle] The class that will get toggled while the image is swapped out on hover.
+ * @property {Boolean} [preloadHoverImages] When true, will make a network request for all images specified within the `hoverSrcAttribute` before the initial `mouseover` event has fired.
+ */
+
+/**
+ * @param {HoverImageOptions} [options] The data attribute the library will attach its delegated events to.
+ * @returns {() => void} Returns a method to destroy the event listeners we placed.
  */
 const initializeHoverImage = ({
 	hoverSrcAttribute = 'data-hover-src',
-	orginalSrcAttribute = 'data-original-src',
+	orginalSrcAttribute,
+	originalSrcAttribute = 'data-original-src',
 	hoverImageSelectorAttribute = 'data-image-selector',
 	classToggle = 'is-hovered',
 	preloadHoverImages = true,
 } = {}) => {
-	if (!hoverSrcAttribute || !orginalSrcAttribute) {
+	// Can't believe I never noticed this typo before...
+	if (orginalSrcAttribute) {
+		originalSrcAttribute = orginalSrcAttribute;
+	}
+
+	if (!hoverSrcAttribute || !originalSrcAttribute) {
 		throw new Error(
-			'Options "hoverSrcAttribute" and "orginalSrcAttribute" must be included when calling function'
+			'Options "hoverSrcAttribute" and "originalSrcAttribute" must be included when calling function'
 		);
 	}
 
 	const selector = `[${hoverSrcAttribute}]`;
-	const mouseover = delegate(selector, 'mouseover', e => {
+
+	function mouseoverHandler(e) {
 		let target = e.delegateTarget;
 		let image = target;
 
@@ -49,9 +62,9 @@ const initializeHoverImage = ({
 			return;
 		}
 
-		const original_src = image.getAttribute(orginalSrcAttribute);
+		const original_src = image.getAttribute(originalSrcAttribute);
 		if (!original_src) {
-			image.setAttribute(orginalSrcAttribute, image.src);
+			image.setAttribute(originalSrcAttribute, image.src);
 		}
 
 		// Change our image's `src` attribute to the hover source
@@ -60,9 +73,9 @@ const initializeHoverImage = ({
 		if (classToggle) {
 			target.classList.add(classToggle);
 		}
-	});
+	}
 
-	const mouseout = delegate(selector, 'mouseout', e => {
+	function mouseoutHandler(e) {
 		let target = e.delegateTarget;
 		let image = target;
 
@@ -83,7 +96,7 @@ const initializeHoverImage = ({
 			return;
 		}
 
-		const original_src = image.getAttribute(orginalSrcAttribute);
+		const original_src = image.getAttribute(originalSrcAttribute);
 		if (!original_src || image.src === original_src) {
 			return;
 		}
@@ -94,7 +107,12 @@ const initializeHoverImage = ({
 		if (classToggle) {
 			image.classList.remove(classToggle);
 		}
-	});
+	}
+
+	const mouseoverListener = delegate(selector, 'mouseover', mouseoverHandler);
+	const focusListener = delegate(selector, 'focus', mouseoverHandler);
+	const mouseoutListener = delegate(selector, 'mouseout', mouseoutHandler);
+	const blurListener = delegate(selector, 'blur', mouseoutHandler);
 
 	if (preloadHoverImages) {
 		// Find all matching images and get unique URLs from their `hoverSrcAttribute`
@@ -103,19 +121,20 @@ const initializeHoverImage = ({
 		for (let i = 0; i < images.length; i++) {
 			const image = images[i];
 			const hover_src = image.getAttribute(hoverSrcAttribute);
+			if (!image_urls[hover_src]) {
+				// Kicks off the network request for our browser to cache for later
+				new Image().src = hover_src;
+			}
+
 			image_urls[hover_src] = true;
 		}
-
-		image_urls = Object.keys(image_urls);
-		image_urls.forEach(image_src => {
-			// Kicks off the network request for our browser to cache for later
-			new Image().src = image_src;
-		});
 	}
 
 	return function destroy() {
-		mouseover.destroy();
-		mouseout.destroy();
+		mouseoverListener.destroy();
+		focusListener.destroy();
+		mouseoutListener.destroy();
+		blurListener.destroy();
 	};
 };
 
