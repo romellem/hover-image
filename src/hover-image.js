@@ -123,7 +123,7 @@ const initializeHoverImage = ({
 			const hover_src = image.getAttribute(hoverSrcAttribute);
 			if (!image_urls[hover_src]) {
 				// Kicks off the network request for our browser to cache for later
-				new Image().src = image_src;
+				new Image().src = hover_src;
 			}
 
 			image_urls[hover_src] = true;
